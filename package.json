@@ -1,0 +1,68 @@
+{
+  "name": "warboard",
+  "version": "1.0.0",
+  "description": "Boardgame 2017",
+  "proxy": "http://localhost:4000",
+  "scripts": {
+    "start": "react-scripts start",
+    "start:server": "NODE_ENV=development node_modules/.bin/nodemon --config nodemon.json server",
+    "test": "make tests",
+    "test:standard": "node_modules/.bin/standard --verbose | snazzy",
+    "test:unit": "node_modules/.bin/_mocha --recursive test/unit",
+    "test:coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --opts .mocharc",
+    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gperreymond/warboard.git"
+  },
+  "author": "Gilles Perreymond",
+  "bugs": {
+    "url": "https://github.com/gperreymond/warboard/issues"
+  },
+  "homepage": "https://github.com/gperreymond/warboard#readme",
+  "devDependencies": {
+    "chai": "4.1.0",
+    "coveralls": "2.13.1",
+    "craftyjs": "0.8.0",
+    "eslint-config-standard": "10.2.1",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-node": "5.1.1",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-standard": "3.0.1",
+    "istanbul": "0.4.5",
+    "mocha": "3.4.2",
+    "mocha-standard": "1.0.0",
+    "nodemon": "1.11.0",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-hexagon": "1.1.1",
+    "react-router-dom": "4.1.2",
+    "react-scripts": "1.0.10",
+    "reflux": "6.4.1",
+    "snazzy": "7.0.0",
+    "standard": "10.0.2"
+  },
+  "dependencies": {
+    "boom": "5.2.0",
+    "debug": "2.6.8",
+    "eraro": "0.4.1",
+    "hapi": "16.5.0",
+    "inert": "4.2.1"
+  },
+  "standard": {
+    "globals": [
+      "before",
+      "after",
+      "describe",
+      "it",
+      "expect"
+    ],
+    "ignore": [
+      "build/**",
+      "coverage/**",
+      "data/**",
+      "public/**"
+    ]
+  }
+}
