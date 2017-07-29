@@ -1,6 +1,8 @@
 const path = require('path')
 const Hapi = require('hapi')
 const Inert = require('inert')
+
+const config = require('../config/default')
 const Routes = require('./routes')
 
 let server = new Hapi.Server({
@@ -14,8 +16,8 @@ let server = new Hapi.Server({
 server.register(Inert, () => {})
 
 server.connection({
-  host: 'localhost',
-  port: '4000'
+  host: config.host,
+  port: config.port
 })
 
 server.route(Routes.endpoints)

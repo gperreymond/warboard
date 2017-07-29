@@ -4,7 +4,7 @@ const rp = require('request-promise')
 
 const hapi = require('../../../server/hapi')
 
-describe('[server] route /api/alive', () => {
+describe('[server] route /not/found', () => {
   before((done) => {
     hapi.start((error) => {
       if (error) {
@@ -13,10 +13,12 @@ describe('[server] route /api/alive', () => {
       done()
     })
   })
-  it('should respond 200', (done) => {
-    rp({uri: 'http://localhost:4000/api/alive', json: true}).then((result) => {
-      expect(result.alive).to.equal(true)
+  it('should respond 404', (done) => {
+    rp({uri: 'http://localhost:4000/not/found', json: true}).then((result) => {
+      done('not good')
+    }).catch((error) => {
+      expect(error.statusCode).to.equal(404)
       done()
-    }).catch(done)
+    })
   })
 })
