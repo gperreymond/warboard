@@ -7,6 +7,12 @@ import Debug from 'debug'
 const debug = Debug('warboard-game:pages')
 
 class Homepage extends Reflux.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      game: false
+    }
+  }
   componentDidMount () {
     debug('componentDidMount %s', this.props.location.pathname)
   }
@@ -17,7 +23,7 @@ class Homepage extends Reflux.Component {
   render () {
     debug('render %s', this.props.location.pathname)
     return (
-      <h2>HOMEPAGE</h2>
+      <div id="game" />
     )
   }
 }
