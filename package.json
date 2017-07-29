@@ -10,7 +10,8 @@
     "test:standard": "node_modules/.bin/standard --verbose | snazzy",
     "test:unit": "NODE_ENV=test node_modules/.bin/_mocha --recursive test/unit",
     "test:coverage": "NODE_ENV=test node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --opts .mocharc",
-    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "build": "react-scripts build"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "inert": "4.2.1"
   },
   "devDependencies": {
+    "angles": "0.2.0",
     "chai": "4.1.0",
     "coveralls": "2.13.1",
     "eslint-config-standard": "10.2.1",
@@ -42,9 +44,10 @@
     "nconf": "0.8.4",
     "nodemon": "1.11.0",
     "normalize.css": "7.0.0",
+    "pixi.js": "4.5.4",
+    "prop-types": "15.5.10",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "react-hexagon": "1.1.1",
     "react-router-dom": "4.1.2",
     "react-scripts": "1.0.10",
     "reflux": "6.4.1",
@@ -55,6 +58,7 @@
   },
   "standard": {
     "globals": [
+      "requestAnimationFrame",
       "before",
       "after",
       "describe",

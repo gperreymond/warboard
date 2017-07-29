@@ -4,13 +4,14 @@ import React from 'react'
 import Reflux from 'reflux'
 import Debug from 'debug'
 
+import Boardgame from '../components/Boardgame'
+
 const debug = Debug('warboard-game:pages')
 
 class Homepage extends Reflux.Component {
   constructor (props) {
     super(props)
     this.state = {
-      game: false
     }
   }
   componentDidMount () {
@@ -23,7 +24,7 @@ class Homepage extends Reflux.Component {
   render () {
     debug('render %s', this.props.location.pathname)
     return (
-      <div id="game" />
+      <Boardgame contentWidth={800} contentHeight={600} />
     )
   }
 }

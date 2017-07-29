@@ -1,4 +1,4 @@
-.PHONY: default start start-server install tests publish
+.PHONY: default start start-server install tests publish build
 
 default: install
 
@@ -17,4 +17,7 @@ tests:
 	npm run test:coverage;
 
 publish:
-	npm run coverage:publish
+	npm run coverage:publish;
+
+build:
+	npm run build;
