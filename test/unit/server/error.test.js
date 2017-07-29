@@ -14,7 +14,7 @@ describe('[server] route /not/found', () => {
     })
   })
   it('should respond 404', (done) => {
-    rp({uri: 'http://localhost:4000/not/found', json: true}).then((result) => {
+    rp({uri: 'http://localhost:4000/not/found', json: true}).then(() => {
       done('not good')
     }).catch((error) => {
       expect(error.statusCode).to.equal(404)
