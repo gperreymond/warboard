@@ -12,6 +12,10 @@ class Homepage extends Reflux.Component {
   constructor (props) {
     super(props)
     this.state = {
+      boardgame: {
+        width: 2160 + 2 * 108,
+        height: 1080
+      }
     }
   }
   componentDidMount () {
@@ -24,7 +28,7 @@ class Homepage extends Reflux.Component {
   render () {
     debug('render %s', this.props.location.pathname)
     return (
-      <Boardgame contentWidth={800} contentHeight={600} />
+      <Boardgame contentWidth={this.state.boardgame.width} contentHeight={this.state.boardgame.height} />
     )
   }
 }
