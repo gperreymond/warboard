@@ -2,42 +2,38 @@
 
 import React from 'react'
 import Reflux from 'reflux'
-
 import Debug from 'debug'
 
-import Store from './../Store'
-import Actions from './../Actions'
+import Store from '../StoreEditor'
+import Actions from '../Actions'
 
-const debug = Debug('warboard-game:boardgame')
+const debug = Debug('warboard-game:pages:editor')
 
-class Boardgame extends Reflux.Component {
+class Editor extends Reflux.Component {
   constructor (props) {
     super(props)
     this.store = Store
     this.gameLoop = this.gameLoop.bind(this)
   }
+  componentDidMount () {
+    debug('componentDidMount %s', this.props.location.pathname)
+    Actions.initializeEditor()
+  }
   componentDidUpdate () {
     if (this.state.initialized === true && this.state.renderer) {
-      debug('componentDidUpdate %s', 'gameCanvas.appendChild')
-      this.refs.gameCanvas.appendChild(this.state.renderer.view)
+      debug('componentDidUpdate %s', 'editorCanvas.appendChild')
+      this.refs.editorCanvas.appendChild(this.state.renderer.view)
       this.gameLoop()
     }
   }
-  componentDidMount () {
-    debug('componentDidMount')
-    Actions.initialize()
+  componentWillUnmount () {
+    debug('componentWillUnmount %s', this.props.location.pathname)
+    Reflux.Component.prototype.componentWillUnmount.call(this)
   }
-  /**
-  * game loop for updating Pixi Canvas
-  **/
   gameLoop () {
-    // render the stage container
     this.state.renderer.render(this.state.stage)
     this.frame = requestAnimationFrame(this.gameLoop)
   }
-  /**
-  * render our container that will store our PixiJS game canvas. Store the ref
-  **/
   render () {
     if (this.state.initialized === false) {
       return (
@@ -48,9 +44,9 @@ class Boardgame extends Reflux.Component {
       )
     }
     return (
-      <div className="game-canvas-container" ref="gameCanvas" />
+      <div className="editor-canvas-container" ref="editorCanvas" />
     )
   }
 }
 
-export default Boardgame
+export default Editor

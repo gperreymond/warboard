@@ -10,13 +10,15 @@ import {
 import 'normalize.css'
 import './styles/global.css'
 
-import Homepage from './pages/Homepage'
+import Master from './pages/Master'
+import Editor from './pages/Editor'
 import NoMatch from './pages/NoMatch'
 
 const Application = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Homepage} />
+      <Route exact path="/master" component={Master} />
+      <Route exact path="/editor" component={Editor} />
       <Route component={NoMatch} />
     </Switch>
   </Router>

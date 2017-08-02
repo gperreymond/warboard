@@ -30,7 +30,6 @@
     "inert": "4.2.1"
   },
   "devDependencies": {
-    "angles": "0.2.0",
     "chai": "4.1.0",
     "coveralls": "2.13.1",
     "eslint-config-standard": "10.2.1",

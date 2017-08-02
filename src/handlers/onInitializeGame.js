@@ -5,11 +5,9 @@ import Actions from '../Actions'
 const debug = Debug('warboard-game:actions:onInitializeGame')
 
 const PIXI = require('pixi.js/dist/pixi.min.js')
-const Container = PIXI.Container
-const autoDetectRenderer = PIXI.autoDetectRenderer
-const loader = PIXI.loader
-// const resources = PIXI.loader.resources
-const Graphics = PIXI.Graphics
+const Container = window.PIXI.Container
+const autoDetectRenderer = window.PIXI.autoDetectRenderer
+const loader = window.PIXI.loader
 
 const handler = (context) => {
   debug('handler')

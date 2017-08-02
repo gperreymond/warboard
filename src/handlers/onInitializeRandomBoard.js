@@ -34,12 +34,7 @@ const handler = (context) => {
     {tile: tiles.shift(), top: 1, left: 3, walls: walls.shift()}
   ]
   rooms.map((data) => {
-    let room = new Room()
-    room.setType(data.tile)
-    room.setPositions({x: data.left, y: data.top})
-    room.setBackground(context.state.resources[data.tile].texture)
-    room.setDecorations(context.state.resources['RoomWallHorizontal'].texture, context.state.resources['RoomWallVertical'].texture)
-    room.setWalls(data.walls)
+    let room = new Room(context.state, data)
     return context.state.stage.addChild(room.getContainer())
   })
   Actions.initializeComplete()

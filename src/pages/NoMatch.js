@@ -5,7 +5,7 @@ import React from 'react'
 const NoMatch = ({ location }) => (
   <div>
     <h2>ERROR 404</h2>
-    <h4>Nothing here for you!</h4>
+    <h3>Nothing here for you!</h3>
   </div>
 )
 

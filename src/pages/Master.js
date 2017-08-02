@@ -6,9 +6,9 @@ import Debug from 'debug'
 
 import Boardgame from '../components/Boardgame'
 
-const debug = Debug('warboard-game:pages')
+const debug = Debug('warboard-game:pages:master')
 
-class Homepage extends Reflux.Component {
+class Master extends Reflux.Component {
   componentDidMount () {
     debug('componentDidMount %s', this.props.location.pathname)
   }
@@ -24,4 +24,4 @@ class Homepage extends Reflux.Component {
   }
 }
 
-export default Homepage
+export default Master

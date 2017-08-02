@@ -4,6 +4,6 @@ nconf.argv().env().file({ file: 'nconf.json' })
 
 module.exports = {
   env: nconf.get('APPLICATION_ENV') || 'development',
-  host: nconf.get('APPLICATION_HOST') || 'localhost',
+  host: nconf.get('APPLICATION_HOST') || '0.0.0.0',
   port: nconf.get('APPLICATION_PORT') || 4000
 }
