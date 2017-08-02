@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/gperreymond/warboard#readme",
   "dependencies": {
+    "bluebird": "3.5.0",
     "boom": "5.2.0",
     "debug": "2.6.8",
     "eraro": "0.4.1",
+    "glob": "7.1.2",
     "hapi": "16.5.0",
     "inert": "4.2.1"
   },
