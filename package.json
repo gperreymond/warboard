@@ -29,7 +29,8 @@
     "eraro": "0.4.1",
     "glob": "7.1.2",
     "hapi": "16.5.0",
-    "inert": "4.2.1"
+    "inert": "4.2.1",
+    "lodash.camelcase": "4.3.0"
   },
   "devDependencies": {
     "chai": "4.1.0",

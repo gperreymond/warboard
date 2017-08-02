@@ -15,6 +15,12 @@ const setBackground = (context) => {
   context._container.addChild(sprite)
 }
 
+const setWalls = (context) => {
+  let sprite = new Sprite(context._state.resources[context._walls].texture)
+  sprite.anchor.set(0.5, 0.5)
+  context._container.addChild(sprite)
+}
+
 const setMask = (context) => {
   let mask = new PIXI.Graphics()
   mask.beginFill()
@@ -32,18 +38,15 @@ class Room {
   constructor (state, data) {
     this._state = state
     this._tile = data.tile
+    this._walls = data.walls
     this._positions = {x: 0, y: 0}
     this._container = new Container()
     this._container.width = 1080
     this._container.height = 1080
     setBackground(this)
+    setWalls(this)
     setPositions(data, this)
     setMask(this)
-  }
-  setWalls (walls) {
-    let sprite = new Sprite(this._state.resources[walls].texture)
-    sprite.anchor.set(0.5, 0.5)
-    this._container.addChild(sprite)
   }
   getContainer () {
     return this._container

@@ -36,7 +36,6 @@ const handler = (context) => {
   ]
   rooms.map((data) => {
     let room = new Room(context.state, data)
-    room.setWalls(data.walls)
     return context.state.stage.addChild(room.getContainer())
   })
   Actions.initializeComplete()

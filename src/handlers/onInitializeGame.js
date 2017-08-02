@@ -14,10 +14,6 @@ const handler = (context) => {
   context.state.progress.text = 'Initialisation du plateau de jeu...'
   context.setState({progress: context.state.progress})
   // prepare game data loader
-  Object.keys(context.state.data.textures).map(key => {
-    loader.add(key, context.state.data.textures[key])
-    return key
-  })
   Object.keys(context.state.data.walls).map(key => {
     loader.add(key, context.state.data.walls[key])
     return key

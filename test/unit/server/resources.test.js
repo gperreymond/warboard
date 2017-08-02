@@ -17,7 +17,6 @@ describe('[server] route /api/resources', () => {
     rp({uri: 'http://localhost:4000/api/resources', json: true}).then((result) => {
       expect(result.tiles).to.be.an('object')
       expect(result.walls).to.be.an('object')
-      expect(result.textures).to.be.an('object')
       done()
     }).catch(done)
   })
