@@ -20,48 +20,61 @@ class Room {
   }
   setPositions (value) {
     this._positions = value
-    this._container.x = 108 + 270 + this._positions.x * 540
+    this._container.x = 270 + this._positions.x * 540
     this._container.y = 270 + this._positions.y * 540
   }
   setType (value) {
     this._type = value
   }
   setWalls (values = []) {
-    console.log(values)
+    let row = -2
     values.map(value => {
+      let col = -2
       let squares = value.split('|')
       squares.map(square => {
-        // North
         let sprite
         let orientations = square.split('')
-        console.log(orientations)
         if (orientations[0] === '1') {
-          console.log('... north')
           sprite = new Sprite(this._textures.wallh)
+          sprite.x = 108 * col
+          sprite.y = 108 * row - 108 * 0.5
+          sprite.anchor.set(0.5, 0.5)
+          this._container.addChild(sprite)
+        }
+        if (orientations[1] === '1') {
+          sprite = new Sprite(this._textures.wallv)
+          sprite.x = 108 * col + 108 * 0.5
+          sprite.y = 108 * row
+          sprite.anchor.set(0.5, 0.5)
+          this._container.addChild(sprite)
+        }
+        if (orientations[2] === '1') {
+          sprite = new Sprite(this._textures.wallh)
+          sprite.x = 108 * col
+          sprite.y = 108 * row + 108 * 0.5
           sprite.anchor.set(0.5, 0.5)
           this._container.addChild(sprite)
         }
         if (orientations[3] === '1') {
-          console.log('... west')
           sprite = new Sprite(this._textures.wallv)
+          sprite.x = 108 * col - 108 * 0.5
+          sprite.y = 108 * row
           sprite.anchor.set(0.5, 0.5)
           this._container.addChild(sprite)
         }
+        col += 1
         return square
       })
+      row += 1
       return squares
     })
-    let sprite = new Sprite(this._textures.walls)
-    sprite.anchor.set(0.5, 0.5)
-    this._container.addChild(sprite)
   }
   setBackground (value) {
     this._background = new Sprite(value)
     this._background.anchor.set(0.5, 0.5)
     this._container.addChild(this._background)
   }
-  setDecorations (walls, wallh, wallv) {
-    this._textures.walls = walls
+  setDecorations (wallh, wallv) {
     this._textures.wallh = wallh
     this._textures.wallv = wallv
   }

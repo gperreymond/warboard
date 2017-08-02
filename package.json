@@ -40,7 +40,7 @@
     "eslint-plugin-standard": "3.0.1",
     "istanbul": "0.4.5",
     "lodash.shuffle": "4.2.0",
-    "mocha": "3.4.2",
+    "mocha": "3.5.0",
     "mocha-standard": "1.0.0",
     "nconf": "0.8.4",
     "nodemon": "1.11.0",

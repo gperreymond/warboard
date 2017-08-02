@@ -1,6 +1,13 @@
 body {
   overflow: hidden;
   background: #000000;
+  color: #ffffff;
+}
+
+h2, h3 {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #e0e0e0;
 }
 
 .game-canvas-container > canvas {
