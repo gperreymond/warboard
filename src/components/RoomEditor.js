@@ -4,6 +4,12 @@ const Sprite = window.PIXI.Sprite
 const Container = window.PIXI.Container
 const Graphics = window.PIXI.Graphics
 
+const setDecorations = (context) => {
+  let sprite = new Sprite(context._state.resources['RoomDecorations'].texture)
+  sprite.anchor.set(0.5, 0.5)
+  context._container.addChild(sprite)
+}
+
 const setMask = (context) => {
   let mask = new Graphics()
   mask.beginFill()
@@ -17,9 +23,9 @@ const setMask = (context) => {
   context._container.addChild(mask)
 }
 
-const setWalls = (data, context) => {
+const loadWalls = (walls, context) => {
   let row = -2
-  data.walls.map(value => {
+  walls.map(value => {
     let col = -2
     let squares = value.split('|')
     squares.map(square => {
@@ -92,15 +98,19 @@ const setWalls = (data, context) => {
 }
 
 class RoomEditor {
-  constructor (state, data) {
+  constructor (state) {
     this._state = state
-    this._tile = data.tile
-    this._positions = {x: 0, y: 0}
+    this._tile = this._state.data.tile
     this._container = new Container()
-    this._container.width = 1080
-    this._container.height = 1080
+    this._container.width = 540
+    this._container.height = 540
+    this._container.x = 270
+    this._container.y = 270
+    setDecorations(this)
     setMask(this)
-    setWalls(data, this)
+  }
+  load (walls) {
+    loadWalls(walls, this)
   }
   getContainer () {
     return this._container

@@ -28,7 +28,7 @@ class StoreEditor extends Reflux.Store {
     this.listenables = [Actions]
     this.handlers = new Handlers()
   }
-  onInitializeEditor () { this.handlers.onInitializeEditor(this) }
+  onInitializeEditor (id) { this.handlers.onInitializeEditor(id, this) }
 }
 
 export default StoreEditor

@@ -15,7 +15,7 @@ const handler = (context) => {
       'Content-Type': 'application/json'
     },
     json: true,
-    uri: window.location.origin + '/api/data'
+    uri: window.location.origin + '/api/resources'
   }, (error, response, body) => {
     if (error) {
       debug('ERROR %o', error)

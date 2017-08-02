@@ -17,7 +17,7 @@ class Editor extends Reflux.Component {
   }
   componentDidMount () {
     debug('componentDidMount %s', this.props.location.pathname)
-    Actions.initializeEditor()
+    Actions.initializeEditor(this.props.match.params.id)
   }
   componentDidUpdate () {
     if (this.state.initialized === true && this.state.renderer) {

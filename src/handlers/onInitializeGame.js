@@ -18,6 +18,10 @@ const handler = (context) => {
     loader.add(key, context.state.data.textures[key])
     return key
   })
+  Object.keys(context.state.data.walls).map(key => {
+    loader.add(key, context.state.data.walls[key])
+    return key
+  })
   Object.keys(context.state.data.tiles).map(key => {
     loader.add(key, context.state.data.tiles[key])
     return key

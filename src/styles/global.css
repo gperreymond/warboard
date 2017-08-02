@@ -10,6 +10,14 @@ h2, h3 {
   color: #e0e0e0;
 }
 
+.editor-canvas-container {
+  text-align: center;
+}
+.editor-canvas-container > canvas {
+  margin-top: 50vh;
+  transform: translateY(-50%);
+}
+
 .game-canvas-container > canvas {
   margin-top: 50vh;
   transform: translateY(-50%);

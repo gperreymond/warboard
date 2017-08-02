@@ -10,12 +10,9 @@ const setPositions = (data, context) => {
 }
 
 const setBackground = (context) => {
-  let background = new Sprite(context._state.resources[context._tile].texture)
-  background.anchor.set(0.5, 0.5)
-  context._container.addChild(background)
-  let decorations = new Sprite(context._state.resources['RoomDecorations'].texture)
-  decorations.anchor.set(0.5, 0.5)
-  context._container.addChild(decorations)
+  let sprite = new Sprite(context._state.resources[context._tile].texture)
+  sprite.anchor.set(0.5, 0.5)
+  context._container.addChild(sprite)
 }
 
 const setMask = (context) => {
@@ -31,80 +28,6 @@ const setMask = (context) => {
   context._container.addChild(mask)
 }
 
-const setWalls = (data, context) => {
-  let row = -2
-  data.walls.map(value => {
-    let col = -2
-    let squares = value.split('|')
-    squares.map(square => {
-      let sprite
-      let orientations = square.split('')
-      // doors
-      if (orientations[0] === 'D') {
-        sprite = new Sprite(context._state.resources['RoomDoorHorizontal'].texture)
-        sprite.x = 108 * col
-        sprite.y = 108 * row - 108 * 0.5
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      if (orientations[1] === 'D') {
-        sprite = new Sprite(context._state.resources['RoomDoorVertical'].texture)
-        sprite.x = 108 * col + 108 * 0.5
-        sprite.y = 108 * row
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      if (orientations[2] === 'D') {
-        sprite = new Sprite(context._state.resources['RoomDoorHorizontal'].texture)
-        sprite.x = 108 * col
-        sprite.y = 108 * row + 108 * 0.5
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      if (orientations[3] === 'D') {
-        sprite = new Sprite(context._state.resources['RoomDoorVertical'].texture)
-        sprite.x = 108 * col - 108 * 0.5
-        sprite.y = 108 * row
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      // walls
-      if (orientations[0] === '1') {
-        sprite = new Sprite(context._state.resources['RoomWallHorizontal'].texture)
-        sprite.x = 108 * col
-        sprite.y = 108 * row - 108 * 0.5
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      if (orientations[1] === '1') {
-        sprite = new Sprite(context._state.resources['RoomWallVertical'].texture)
-        sprite.x = 108 * col + 108 * 0.5
-        sprite.y = 108 * row
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      if (orientations[2] === '1') {
-        sprite = new Sprite(context._state.resources['RoomWallHorizontal'].texture)
-        sprite.x = 108 * col
-        sprite.y = 108 * row + 108 * 0.5
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      if (orientations[3] === '1') {
-        sprite = new Sprite(context._state.resources['RoomWallVertical'].texture)
-        sprite.x = 108 * col - 108 * 0.5
-        sprite.y = 108 * row
-        sprite.anchor.set(0.5, 0.5)
-        context._container.addChild(sprite)
-      }
-      col += 1
-      return square
-    })
-    row += 1
-    return squares
-  })
-}
-
 class Room {
   constructor (state, data) {
     this._state = state
@@ -116,7 +39,11 @@ class Room {
     setBackground(this)
     setPositions(data, this)
     setMask(this)
-    setWalls(data, this)
+  }
+  setWalls (walls) {
+    let sprite = new Sprite(this._state.resources[walls].texture)
+    sprite.anchor.set(0.5, 0.5)
+    this._container.addChild(sprite)
   }
   getContainer () {
     return this._container

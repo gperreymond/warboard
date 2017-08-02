@@ -1,6 +1,8 @@
 import request from 'request'
 import Debug from 'debug'
 
+import RoomEditor from '../components/RoomEditor'
+
 const debug = Debug('warboard-game:actions:onInitializeEditor')
 
 require('pixi.js/dist/pixi.min.js')
@@ -8,7 +10,7 @@ const Container = window.PIXI.Container
 const autoDetectRenderer = window.PIXI.autoDetectRenderer
 const loader = window.PIXI.loader
 
-const handler = (context) => {
+const handler = (id, context) => {
   debug('handler')
   context.state.progress.text = 'Chargement des data...'
   context.setState({progress: context.state.progress})
@@ -18,7 +20,7 @@ const handler = (context) => {
       'Content-Type': 'application/json'
     },
     json: true,
-    uri: window.location.origin + '/api/data'
+    uri: window.location.origin + '/api/walls'
   }, (error, response, body) => {
     if (error) {
       debug('ERROR %o', error)
@@ -43,13 +45,15 @@ const handler = (context) => {
       })
       loader.load((loader, resources) => {
         debug('load is complete')
-        let renderer = autoDetectRenderer(540, 540, {antialias: true, transparent: false, resolution: 1})
-        renderer.backgroundColor = 0xffcc00
+        let renderer = autoDetectRenderer(540, 540, {antialias: true, transparent: true, resolution: 1})
         let stage = new Container()
         context.state.resources = resources
         context.state.renderer = renderer
         context.state.stage = stage
         debug('game size %s x %s', renderer.width, renderer.height)
+        let room = new RoomEditor(context.state)
+        room.load(context.state.data.walls[id])
+        context.state.stage.addChild(room.getContainer())
         context.state.initialized = true
         context.setState(context.state)
       })

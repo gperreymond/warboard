@@ -9,13 +9,14 @@ const debug = Debug('warboard-game:actions:onInitializeRandomBoard')
 const handler = (context) => {
   debug('handler')
   // 1 ... random walls
+  let randomWalls = Object.keys(context.state.data.walls)
   let walls = []
   for (let i = 0; i < 8; i++) {
-    let randomWalls = shuffle(context.state.data.walls)
-    walls.push(randomWalls[0])
+    let randomWall = shuffle(randomWalls)[0]
+    walls.push(randomWall)
   }
   // 2... random tiles
-  let randomTiles = shuffle(['RoomTileAir', 'RoomTileEarth', 'RoomTileFire', 'RoomTileNature', 'RoomTileMagic', 'RoomTileUndead', 'RoomTileTech'])
+  let randomTiles = shuffle(Object.keys(context.state.data.tiles))
   let tiles = []
   for (let i = 0; i < 4; i++) {
     tiles.push(randomTiles[i])
@@ -35,6 +36,7 @@ const handler = (context) => {
   ]
   rooms.map((data) => {
     let room = new Room(context.state, data)
+    room.setWalls(data.walls)
     return context.state.stage.addChild(room.getContainer())
   })
   Actions.initializeComplete()
