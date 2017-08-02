@@ -8,7 +8,7 @@ describe('[server] route /api/alive', () => {
   before((done) => {
     hapi.start((error) => {
       if (error) {
-        done(error)
+        return done(error)
       }
       done()
     })

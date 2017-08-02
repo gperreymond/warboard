@@ -8,7 +8,7 @@ describe('[server] route /not/found', () => {
   before((done) => {
     hapi.start((error) => {
       if (error) {
-        done(error)
+        return done(error)
       }
       done()
     })

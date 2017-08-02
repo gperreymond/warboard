@@ -1,9 +1,11 @@
 
+require('pixi.js/dist/pixi.min.js')
 const Sprite = window.PIXI.Sprite
 const Container = window.PIXI.Container
+const Graphics = window.PIXI.Graphics
 
 const setMask = (context) => {
-  let mask = new PIXI.Graphics()
+  let mask = new Graphics()
   mask.beginFill()
   mask.moveTo(-270, -270)
   mask.lineTo(270, -270)
