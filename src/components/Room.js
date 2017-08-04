@@ -11,12 +11,16 @@ const setPositions = (data, context) => {
 
 const setBackground = (context) => {
   let sprite = new Sprite(context._state.resources[context._tile].texture)
+  sprite.width = 540
+  sprite.height = 540
   sprite.anchor.set(0.5, 0.5)
   context._container.addChild(sprite)
 }
 
 const setWalls = (context) => {
   let sprite = new Sprite(context._state.resources[context._walls].texture)
+  sprite.width = 540
+  sprite.height = 540
   sprite.anchor.set(0.5, 0.5)
   context._container.addChild(sprite)
 }
