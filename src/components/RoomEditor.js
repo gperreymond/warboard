@@ -1,5 +1,6 @@
-
 require('pixi.js/dist/pixi.min.js')
+window.PIXI.utils.skipHello()
+
 const Sprite = window.PIXI.Sprite
 const Container = window.PIXI.Container
 const Graphics = window.PIXI.Graphics

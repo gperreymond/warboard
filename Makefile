@@ -2,22 +2,22 @@
 
 default: install
 
-start:
-	npm start;
+start-client:
+	yarn start:client;
 
 start-server:
-	npm run start:server;
+	yarn start:server;
 
 install:
-	npm install;
+	yarn;
 
 tests:
 	rm -rf coverage;
-	npm run test:standard;
-	npm run test:coverage;
+	yarn test:standard;
+	yarn test:coverage;
 
 publish:
-	npm run coverage:publish;
+	yarn coverage:publish;
 
 build:
-	npm run build;
+	yarn build;

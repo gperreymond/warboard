@@ -1,4 +1,5 @@
-const PIXI = require('pixi.js/dist/pixi.min.js')
+require('pixi.js/dist/pixi.min.js')
+window.PIXI.utils.skipHello()
 
 const Sprite = window.PIXI.Sprite
 const Container = window.PIXI.Container
@@ -26,7 +27,7 @@ const setWalls = (context) => {
 }
 
 const setMask = (context) => {
-  let mask = new PIXI.Graphics()
+  let mask = new window.PIXI.Graphics()
   mask.beginFill()
   mask.moveTo(-270, -270)
   mask.lineTo(270, -270)
