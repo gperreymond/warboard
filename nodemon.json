@@ -1,4 +1,7 @@
 {
   "verbose": false,
-  "watch": ["server/**/*.js"]
+  "watch": ["server/**/*.js"],
+  "env": {
+    "NODE_ENV": "development"
+  }
 }

@@ -1,4 +1,4 @@
-import shuffle from 'lodash.shuffle'
+import { shuffle } from 'lodash'
 import Debug from 'debug'
 
 import Actions from '../Actions'
