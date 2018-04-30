@@ -5,7 +5,6 @@ import Reflux from 'reflux'
 import Debug from 'debug'
 
 import Store from '../StoreEditor'
-import Actions from '../Actions'
 
 const debug = Debug('warboard-game:pages:editor')
 
@@ -13,39 +12,45 @@ class Editor extends Reflux.Component {
   constructor (props) {
     super(props)
     this.store = Store
-    this.gameLoop = this.gameLoop.bind(this)
   }
   componentDidMount () {
     debug('componentDidMount %s', this.props.location.pathname)
-    Actions.initializeEditor(this.props.match.params.id)
-  }
-  componentDidUpdate () {
-    if (this.state.initialized === true && this.state.renderer) {
-      debug('componentDidUpdate %s', 'editorCanvas.appendChild')
-      this.refs.editorCanvas.appendChild(this.state.renderer.view)
-      this.gameLoop()
+    let squares = []
+    for (let row = 0; row < 5; row++) {
+      for (let col = 0; col < 5; col++) {
+        let index = (row + col * 5)
+        squares.push({
+          row, col, index
+        })
+      }
     }
+    this.setState({squares})
   }
   componentWillUnmount () {
     debug('componentWillUnmount %s', this.props.location.pathname)
     Reflux.Component.prototype.componentWillUnmount.call(this)
   }
-  gameLoop () {
-    this.state.renderer.render(this.state.stage)
-    this.frame = requestAnimationFrame(this.gameLoop)
-  }
   render () {
-    if (this.state.initialized === false) {
+    if (this.state.squares) {
       return (
         <div>
-          <h2>{this.state.progress.text}</h2>
-          <h3>Current is {this.state.progress.value}%</h3>
+          {this.state.squares.map(function (val, i) {
+            return (
+              <div key={i} style={{
+                position: 'absolute',
+                width: '108px',
+                height: '108px',
+                left: val.row * 108,
+                top: val.col * 108
+              }}>
+                {val.index}
+              </div>
+            )
+          })}
         </div>
       )
     }
-    return (
-      <div className="editor-canvas-container" ref="editorCanvas" />
-    )
+    return (<h2>...</h2>)
   }
 }
 

@@ -16,7 +16,7 @@ class Store extends Reflux.Store {
         value: 0
       },
       options: {
-        contentWidth: 2160,
+        contentWidth: 2160 + (108 * 2),
         contentHeight: 1080
       },
       data: null,

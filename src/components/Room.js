@@ -6,7 +6,7 @@ const Container = window.PIXI.Container
 
 const setPositions = (data, context) => {
   context._positions = {x: data.left, y: data.top}
-  context._container.x = 270 + context._positions.x * 540
+  context._container.x = 270 + context._positions.x * 540 + 108
   context._container.y = 270 + context._positions.y * 540
 }
 

@@ -18,7 +18,7 @@ const Application = () => (
   <Router>
     <Switch>
       <Route exact path="/master" component={Master} />
-      <Route exact path="/editor/:id" component={Editor} />
+      <Route exact path="/editor" component={Editor} />
       <Route component={NoMatch} />
     </Switch>
   </Router>
