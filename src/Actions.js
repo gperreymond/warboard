@@ -4,7 +4,10 @@ const Actions = Reflux.createActions([
   'initialize',
   'initializeGame',
   'initializeRandomBoard',
-  'initializeComplete'
+  'initializeComplete',
+  'updateWall',
+  'addSquare',
+  'saveWalls'
 ])
 
 export default Actions
