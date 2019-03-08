@@ -44,10 +44,10 @@
     "nyc": "11.7.1",
     "pixi.js": "4.7.3",
     "prop-types": "15.6.1",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-router-dom": "4.2.2",
-    "react-scripts": "1.1.4",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "2.1.8",
     "reflux": "6.4.1",
     "request": "2.85.0",
     "request-promise": "4.2.2",
@@ -69,5 +69,11 @@
       "data/**",
       "public/**"
     ]
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

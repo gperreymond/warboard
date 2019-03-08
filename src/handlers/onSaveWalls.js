@@ -9,7 +9,7 @@ const handler = (context, item) => {
     item.walls.bottom === false ? seq += '0' : seq += '1'
     item.walls.left === false ? seq += '0' : seq += '1'
     item.walls.top === false ? seq += '0' : seq += '1'
-    item.walls.right === false ? seq += '0' : seq += '1'
+    item.walls.right === false ? seq += '0;' : seq += '1;'
   })
   debug(seq)
 }
